@@ -19,4 +19,4 @@ jobs:
             })
             console.log(release)
             return release
-      - run: echo "${{ steps.get-release.output.result }}"
+      - run: echo "${{ steps.get-release.outputs.result }}"
