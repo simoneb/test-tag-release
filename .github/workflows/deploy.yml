@@ -17,4 +17,4 @@ jobs:
               repo: context.repo.repo,
               tag: context.payload.release.tag_name
             })
-      - run: echo ${{ steps.get-release.output.result }}
+      - run: echo "${{ steps.get-release.output.result }}"
