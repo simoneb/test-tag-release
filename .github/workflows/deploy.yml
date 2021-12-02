@@ -12,7 +12,7 @@ jobs:
         id: get-release
         with:
           script: |
-            github.rest.repos.getReleaseByTag({
+            return github.rest.repos.getReleaseByTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag: context.payload.release.tag_name
