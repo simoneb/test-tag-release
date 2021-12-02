@@ -12,9 +12,11 @@ jobs:
         id: get-release
         with:
           script: |
-            return github.rest.repos.getReleaseByTag({
+            const release = github.rest.repos.getReleaseByTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag: context.payload.release.tag_name
             })
+            console.log(release)
+            return release
       - run: echo "${{ steps.get-release.output.result }}"
