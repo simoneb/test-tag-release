@@ -1,0 +1,17 @@
+name: deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v5
+        id: get-release
+        with:
+          script: |
+            return console.log(context, github, ${{ github }})
+      - run: echo ${{ steps.get-release.output.result }}
+      - run: echo ${{ github }}
