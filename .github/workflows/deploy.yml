@@ -12,11 +12,10 @@ jobs:
         id: get-release
         with:
           script: |
-            const release = github.rest.repos.getReleaseByTag({
+            const { data } = await github.rest.repos.getReleaseByTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag: context.payload.release.tag_name
             })
-            console.log(release)
-            return release
+            return data
       - run: echo "${{ steps.get-release.outputs.result }}"
