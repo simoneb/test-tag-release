@@ -8,14 +8,11 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/github-script@v5
-        id: get-release
+        env: 
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
         with:
           script: |
-            const { data } = await github.rest.repos.getReleaseByTag({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              tag: context.payload.release.tag_name
-            })
-            return data
-      - run: echo ${{ fromJSON(steps.get-release.outputs.result).html_url }}
+            const script = require('./release.js')
+            await script({ github, context, require })
