@@ -11,10 +11,10 @@ function processReleaseBody(releaseBody) {
       .replace(/\* /g, '- ')
       // bold
       .replace(/\*+/g, '*')
-      // usernames
-      .replace(/@(.+)/g, '<https://github.com/$1|@$1>')
       // github links
       .replace(/https:\/\/github.com\/.+\/(?:pull|issue)\/(.+)/g, '<$&|#$1>')
+      // usernames
+      .replace(/@(\w+)/g, '<https://github.com/$1|@$1>')
   )
 }
 
