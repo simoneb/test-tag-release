@@ -41,6 +41,7 @@ async function notifyRelease({ require, github, context }) {
 
     req.write(
       JSON.stringify({
+        channel: '@simone',
         attachments: [
           {
             fallback: `<${release.html_url}|New release ${release.tag_name}>`,
